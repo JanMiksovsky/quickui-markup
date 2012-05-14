@@ -1,0 +1,5 @@
+<!-- Simple control. -->
+
+<Control className="Simple">
+  <span ref="Simple_content" />
+</Control>

@@ -1,0 +1,15 @@
+<!-- Simple base class. -->
+
+<Control className="Foo">
+
+<content>
+    <span ref="Simple_content" />
+</content>
+    
+<style>
+{
+    color: black;
+}
+</style>
+
+</Control>
