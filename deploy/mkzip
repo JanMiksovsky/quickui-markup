@@ -8,16 +8,16 @@
 # Get location of parent QuickUI folder relative to location of this script.
 scriptPath=$(cd ${0%/*} && echo $PWD/${0##*/})
 scriptFolder=`dirname "$scriptPath"`
-quickui="$scriptFolder/.."
-mono="$quickui/mono"
+quickuiMarkup="$scriptFolder/.."
+mono="$quickuiMarkup/mono"
 
 # The line endings of the mono bin scripts should be Unix style, but can end
 # with Windows (crlf) style line endings. Force deletion of carriage returns.
 bin="$mono/bin"
-cp $bin/qb $quickui/qb.orig
-cp $bin/qc $quickui/qc.orig
-tr -d '\r' < $quickui/qb.orig > $bin/qb
-tr -d '\r' < $quickui/qc.orig > $bin/qc
+cp $bin/qb $quickuiMarkup/qb.orig
+cp $bin/qc $quickuiMarkup/qc.orig
+tr -d '\r' < $quickuiMarkup/qb.orig > $bin/qb
+tr -d '\r' < $quickuiMarkup/qc.orig > $bin/qc
 
 # Clear mono lib folder.
 lib="$mono/lib"
@@ -29,8 +29,8 @@ fi
 mkdir $lib
 
 # Copy tool outputs to mono lib folder.
-cp $quickui/tools/qb/bin/Release/qb.exe $lib
-cp $quickui/tools/qb/bin/Release/qc.exe $lib
+cp $quickuiMarkup/qb/bin/Release/qb.exe $lib
+cp $quickuiMarkup/qb/bin/Release/qc.exe $lib
 
 # Build ZIP file for OS/X.
 zipFile="$scriptFolder/QuickUI.zip"
@@ -40,5 +40,5 @@ fi
 7z a $zipFile $mono/* -r > /dev/null
 
 # Restore the original bin files
-mv $quickui/qb.orig $bin/qb
-mv $quickui/qc.orig $bin/qc
+mv $quickuiMarkup/qb.orig $bin/qb
+mv $quickuiMarkup/qc.orig $bin/qc
