@@ -4,7 +4,6 @@ Tests a bunch of compiler features.
 */
 var Comprehensive = SampleBaseClass.sub({
     className: "Comprehensive",
-    genericDefault: "true",
     tag: "div",
     inherited: {
         content: [
@@ -29,7 +28,8 @@ var Comprehensive = SampleBaseClass.sub({
                 ]
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 Comprehensive.prototype.extend({

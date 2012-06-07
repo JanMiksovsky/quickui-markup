@@ -71,7 +71,7 @@ namespace qc
                 "{Comment}" +
                 "var {ClassName} = {BaseClassName}.sub({\n" +
                 "{CssClassName}" +
-                "{Generic}" +
+                /* "{Generic}" + */
                 "{Tag}" +
                 "{BaseClassProperties}" +
                 "});\n" + 
@@ -84,9 +84,11 @@ namespace qc
                     CssClassName = EmitClassProperty( "className", Name, indentLevel + 1,
                         String.IsNullOrEmpty(Generic) && String.IsNullOrEmpty(Tag) && String.IsNullOrEmpty(baseClassProperties)
                     ),
+                    /*
                     Generic = EmitClassProperty("genericDefault", Generic, indentLevel + 1,
                         String.IsNullOrEmpty(Tag) && String.IsNullOrEmpty(baseClassProperties)
                     ),
+                    */
                     Tag = EmitClassProperty("tag", Tag, indentLevel + 1,
                         String.IsNullOrEmpty(baseClassProperties)
                     ),
@@ -156,7 +158,7 @@ namespace qc
                         this.Content = node;
                         break;
 
-                    case "genericDefault":
+                    case "generic":
                         VerifyPropertyIsNull(propertyName, this.Generic);
                         this.Generic = text;
                         break;
@@ -185,6 +187,23 @@ namespace qc
                         throw new CompilerException(
                             String.Format("Unknown class definition element: \"{0}\".", propertyName));
                 }
+            }
+
+            /* If generic property was set, copy it to prototype. */
+            if (!String.IsNullOrEmpty(this.Generic))
+            {
+                if (this.Prototype == null)
+                {
+                    this.Prototype = new MarkupControlInstance();
+                    this.Prototype.ClassName = "Control";
+                    if (this.Content != null)
+                    {
+                        /* Move content over to new prototype as well. */
+                        this.Prototype.Properties["content"] = this.Content;
+                        this.Content = null;
+                    }
+                }
+                this.Prototype.Properties["generic"] = new MarkupHtmlElement(this.Generic);
             }
         }
 
