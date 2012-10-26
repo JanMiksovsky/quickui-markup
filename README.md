@@ -5,7 +5,15 @@ This is the *optional* compiler for QuickUI markup.
 This feature is not required for QuickUI's normal use. The QuickUI Catalog
 (in the quickui-catalog repo) uses this, as does at least one commericial
 application, but going forward the standard way to create QuickUI controls is
-with plain JavaScript and/or CoffeeScript. 
+with plain JavaScript and/or CoffeeScript.
+
+### Grunt.js
+
+The markup compiler can be installed and invoked as a "qb" task in Grunt.js:
+
+```
+npm install quickui-markup
+```
 
 ### Visual Studio
 

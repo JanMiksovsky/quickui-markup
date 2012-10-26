@@ -1,0 +1,11 @@
+{
+    "name": "quickui-markup",
+    "title": "QuickUI Markup compiler",
+    "description": "Compiles an HTML-plus-custom-tags markup language into JavaScript",
+    "version": "0.9.1",
+    "homepage": "http://quickui.org/markup",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/JanMiksovsky/quickui-markup"
+    }
+}
