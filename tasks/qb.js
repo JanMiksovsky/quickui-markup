@@ -26,7 +26,7 @@ module.exports = function( grunt ) {
             if ( error ) {
                 grunt.log.writeln( "qb failed: " + error );
             } else {
-                grunt.log.writeln( "Compiled " + projectPath ); 
+                grunt.verbose.writeln( "Compiled " + projectPath ); 
             }
             done( !error );
         });
