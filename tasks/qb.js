@@ -20,13 +20,13 @@ module.exports = function( grunt ) {
             // On Mac, invoke qb.exe using Mono.
             command = "mono " + command;
         }
-        console.log ( "command: " + command );
+        grunt.verbose.writeln( "qb: invoking markup compiler: " + command );
 
         child_process.exec( command, null, function( error, stdout, stderr ){
             if ( error ) {
                 grunt.log.writeln( "qb failed: " + error );
             } else {
-                grunt.verbose.writeln( "Compiled " + projectPath ); 
+                grunt.verbose.writeln( "qb: Compiled " + projectPath ); 
             }
             done( !error );
         });
